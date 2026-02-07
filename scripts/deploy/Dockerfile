@@ -18,7 +18,7 @@ RUN pnpm run build
 
 RUN echo "Builder Success 🎉"
 
-FROM nginx:stable-alpine as production
+FROM nginx:1.29.5-alpine3.23 as production
 
 RUN echo "types { application/javascript js mjs; }" > /etc/nginx/conf.d/mjs.conf
 COPY --from=builder /app/playground/dist /usr/share/nginx/html
